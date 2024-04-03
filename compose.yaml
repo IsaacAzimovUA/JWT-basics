@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: ./api
+    ports:
+      - 3000:3000
+    volumes:
+      - ./api:/api
+    environment:
+      DB_URI: mongodb://db/store
+  db:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - store:/data/db
+volumes:
+  store:
